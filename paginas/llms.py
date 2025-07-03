@@ -39,7 +39,7 @@ def gerar_titulo_chat(mensagens):
         elif msg["role"] == "assistant":
             conteudo_chat += f"Assistente: {msg['content']}\n"
     
-    prompt = f"""Baseado nesta conversa inicial, crie um título curto e descritivo (máximo 50 caracteres) para esta conversa amorosa com Maria Madalena:
+    prompt = f"""De maneira engraçadinha e baseado nesta conversa inicial, crie um título curto e descritivo (máximo 50 caracteres) para esta conversa amorosa com Maria Madalena:
 
 {conteudo_chat}
 
