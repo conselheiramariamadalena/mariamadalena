@@ -1,6 +1,7 @@
 import streamlit as st 
 from paginas.funcoes import inicializar_firebase, obter_perfil_usuario, atualizar_perfil_usuario, login_usuario, registrar_acao_usuario
 import os # Importar os
+import numpy as np
 
 # Inicializa o Firebase
 inicializar_firebase() 
@@ -67,6 +68,12 @@ if not hasattr(st.experimental_user, 'is_logged_in') or not st.experimental_user
             # Registra o usuário no Firestore se for o primeiro acesso (login_usuario faz isso)
             # REMOVIDO DAQUI: login_usuario() 
             st.login() # Função de login do Streamlit (redireciona)
+            moeda = np.random.uniform(low=0, high=1, size=1)
+            if moeda <= 0.8:
+                tipo_prompt = 'promtp_A'
+            else:
+                tipo_prompt = 'promtp_B'
+
         
         # Carrega conteúdo dos Termos para o Popover
         termos_content = "Não foi possível carregar os Termos de Uso e Política de Privacidade."
@@ -155,6 +162,7 @@ else:
                         "relacionamento_status": relacionamento_status,
                         "primeiro_acesso_concluido": True,
                         "consentimento_conselheira": True
+                        "tipo de prompt": tipo_prompt
                     }
                     if atualizar_perfil_usuario(dados_atualizar):
                         st.success("Perfeito! Agora já posso te ajudar melhor! Você será redirecionada para nossa conversa.")

@@ -15,6 +15,7 @@ from paginas.funcoes import (
 from paginas.llms import gerar_titulo_chat
 from datetime import datetime
 
+
  
 # Inicializa o Firebase
 inicializar_firebase() 

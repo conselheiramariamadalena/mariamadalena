@@ -63,7 +63,8 @@ def login_usuario():
             # Controle e Metadados
             "data_cadastro": datetime.now(),
             "ultimo_acesso": datetime.now(),
-            "primeiro_acesso_concluido": False # Flag para o formulário inicial
+            "primeiro_acesso_concluido": False, # Flag para o formulário inicial
+            "tipo de prompt": ""
         }
         doc_ref.set(dados_usuario)
         registrar_acao_usuario("Cadastro", "Novo usuário registrado")
