@@ -99,7 +99,7 @@ else:
     if perfil and not perfil.get("primeiro_acesso_concluido", False):
         #Aleatorização do prompt
         moeda = np.random.uniform(low=0, high=1, size=1)
-        if moeda <= 0.8:
+        if moeda <= 0.75:
             tipo_prompt = 'prompt_A'
         else:
             tipo_prompt = 'prompt_B'
