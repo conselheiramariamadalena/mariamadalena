@@ -68,11 +68,7 @@ if not hasattr(st.experimental_user, 'is_logged_in') or not st.experimental_user
             # Registra o usuário no Firestore se for o primeiro acesso (login_usuario faz isso)
             # REMOVIDO DAQUI: login_usuario() 
             st.login() # Função de login do Streamlit (redireciona)
-            moeda = np.random.uniform(low=0, high=1, size=1)
-            if moeda <= 0.8:
-                tipo_prompt = 'promtp_A'
-            else:
-                tipo_prompt = 'promtp_B'
+            
 
         
         # Carrega conteúdo dos Termos para o Popover
@@ -101,6 +97,13 @@ else:
     perfil = obter_perfil_usuario()
 
     if perfil and not perfil.get("primeiro_acesso_concluido", False):
+        #Aleatorização do prompt
+        moeda = np.random.uniform(low=0, high=1, size=1)
+        if moeda <= 0.8:
+            tipo_prompt = 'promtp_A'
+        else:
+            tipo_prompt = 'promtp_B'
+
         # --- Formulário de Primeiro Acesso ---
         st.title("💕 Bem-vinda à Maria Madalena!")
         st.info("Para eu te ajudar melhor nos assuntos do coração, preciso conhecer você um pouquinho. Me conta sobre você:")
