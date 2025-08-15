@@ -335,7 +335,7 @@ if prompt:
     with st.chat_message("assistant", avatar=avatar_assistant):
         try:
             # Prepara o sistema prompt personalizado para Maria Madalena
-            system_prompt = "legal"
+            system_prompt = system_prompt_mariamadalena
 
             # Prepara mensagens para a API
             messages = [{"role": "system", "content": system_prompt}]
