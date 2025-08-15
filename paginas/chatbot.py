@@ -14,6 +14,25 @@ from paginas.funcoes import (
 )
 from paginas.llms import gerar_titulo_chat
 from datetime import datetime
+ 
+# Inicializa o Firebase
+inicializar_firebase() 
+
+# Verifica se o usuário está logado
+if not hasattr(st.experimental_user, 'is_logged_in') or not st.experimental_user.is_logged_in:
+    st.warning("Você precisa fazer login para conversar com Maria Madalena.")
+    st.stop()
+
+# Realiza o login do usuário (atualiza último acesso)
+login_usuario() 
+
+# Registra a ação de login apenas na primeira vez que a página é carregada na sessão
+if 'login_registrado' not in st.session_state:
+    registrar_acao_usuario("Login", "Chat Maria Madalena")
+    st.session_state['login_registrado'] = True
+
+# Obtém o perfil e define o nome do usuário ANTES de usar no popover
+perfil = obter_perfil_usuario()
 
 # Prompts
 prompt_institucional = f"""
@@ -131,25 +150,6 @@ Puxe conversa leve, faça piada ácida com a situação amorosa do usuário na m
 Engaje mais do que apenas responda. O foco é dar risada e puxar papo — descobrir os temas é só um bônus.
 """
 
- 
-# Inicializa o Firebase
-inicializar_firebase() 
-
-# Verifica se o usuário está logado
-if not hasattr(st.experimental_user, 'is_logged_in') or not st.experimental_user.is_logged_in:
-    st.warning("Você precisa fazer login para conversar com Maria Madalena.")
-    st.stop()
-
-# Realiza o login do usuário (atualiza último acesso)
-login_usuario() 
-
-# Registra a ação de login apenas na primeira vez que a página é carregada na sessão
-if 'login_registrado' not in st.session_state:
-    registrar_acao_usuario("Login", "Chat Maria Madalena")
-    st.session_state['login_registrado'] = True
-
-# Obtém o perfil e define o nome do usuário ANTES de usar no popover
-perfil = obter_perfil_usuario()
 # Define prompt
 if perfil.get("tipo de prompt") == 'prompt_A':
     system_prompt_mariamadalena = prompt_institucional
