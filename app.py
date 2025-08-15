@@ -161,7 +161,7 @@ else:
                         "orientacao_sexual": orientacao_sexual,
                         "relacionamento_status": relacionamento_status,
                         "primeiro_acesso_concluido": True,
-                        "consentimento_conselheira": True
+                        "consentimento_conselheira": True,
                         "tipo de prompt": tipo_prompt
                     }
                     if atualizar_perfil_usuario(dados_atualizar):
