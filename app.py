@@ -100,9 +100,9 @@ else:
         #Aleatorização do prompt
         moeda = np.random.uniform(low=0, high=1, size=1)
         if moeda <= 0.8:
-            tipo_prompt = prompt_A
+            tipo_prompt = 'prompt_A'
         else:
-            tipo_prompt = prompt_B
+            tipo_prompt = 'prompt_B'
 
         # --- Formulário de Primeiro Acesso ---
         st.title("💕 Bem-vinda à Maria Madalena!")
